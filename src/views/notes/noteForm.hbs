@@ -1,0 +1,85 @@
+<style>
+    .notes-add-title {
+        width: 100%;
+        margin: 30px 0 0;
+        text-align: center;
+        font-size: 2.4rem;
+        color: #ffb921;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .notes-form {
+        width: 90%;
+        max-width: 450px;
+        padding: 20px 15px;
+        margin: 15px auto;
+        border: none;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .notes-form-label {
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 1.6rem;
+        color: #424242;
+    }
+
+    .notes-form-title {
+        width: 100%;
+        height: auto;
+        min-height: 35px;
+        border: none;
+        border-bottom: 0.8px solid #424242;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #424242;
+    }
+
+    .notes-form-description {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        height: auto;
+        min-height: 100px;
+        margin-top: 10px;
+        border: none;
+        border-bottom: 0.8px solid #424242;
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #424242;
+    }
+
+    .notes-form-description::placeholder,
+    .notes-form-title::placeholder {
+        color: transparent;
+    }
+
+    .notes-form-title:focus,
+    .notes-form-description:focus {
+        outline: none;
+        border-bottom-width: 1.5px;
+    }
+
+    .notes-form-btn {
+        width: 100%;
+        height: 40px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.8rem;
+        color: #fff;
+        background-color: #ffb921;
+    }
+</style>
+<h2 class="notes-add-title">New Note</h2>
+<form action="/notes" method="POST" class="notes-form">
+    <label class="notes-form-label">Title</label>
+    <input type="text" placeholder="title" name="noteTitle" class="notes-form-title">
+    <label class="notes-form-label">Descripiton</label>
+    <textarea name="noteDescription" class="notes-form-description" cols="30" rows="10"
+        placeholder="Description"></textarea>
+    <button type="submit" class="notes-form-btn">Create</button>
+</form>
