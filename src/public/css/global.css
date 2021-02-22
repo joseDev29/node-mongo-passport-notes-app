@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #00d5ff;
+  --background-color: #fff;
+  --text-color: #424242;
+  --gray-borders: #ebebeb;
+  --border-radius-container: 0.25rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,5 +18,6 @@ html {
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: var(--background-color);
+  min-width: 320px;
 }
