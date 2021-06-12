@@ -75,11 +75,13 @@
     }
 </style>
 <h2 class="notes-add-title">New Note</h2>
-<form action="/notes" method="POST" class="notes-form">
+<form class="notes-form">
     <label class="notes-form-label">Title</label>
-    <input type="text" name="title" placeholder="Title" class="notes-form-title">
+    <input type="text" name="title" placeholder="Title" class="notes-form-title" id="createNoteTitle">
     <label class="notes-form-label">Descripiton</label>
-    <textarea name="description" class="notes-form-description" cols="30" rows="10"
+    <textarea name="description" class="notes-form-description" id="createNoteDescription" cols="30" rows="10"
         placeholder="Description"></textarea>
-    <button type="submit" class="notes-form-btn">Create</button>
+    <button type="submit" class="notes-form-btn" id="createNoteBtn" onclick="createNote(event)">Create</button>
 </form>
+
+<script src="/js/notesActions.js"></script>

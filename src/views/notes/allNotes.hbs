@@ -95,7 +95,6 @@
         border-radius: 0.25rem;
     }
 
-
     @media (min-width: 740px) {
         .notes-container {
             width: 720px;
@@ -119,31 +118,113 @@
     }
 </style>
 
+<style>
+    .note-edit-modal {
+        width: 90%;
+        max-width: 350px;
+        min-width: 300px;
+        height: 400px;
+        min-height: 400px;
+        max-height: 700px;
+        padding: 10px;
+        border-radius: 0.25rem;
+        background-color: #fff;
+    }
+
+    .edit-modal-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .edit-modal-save,
+    .edit-modal-cancel {
+        display: inline-flex;
+        justify-content: center;
+        width: 48%;
+        padding: 8px 0;
+        font-size: 1.6rem;
+        text-decoration: none;
+        border: 1.5px solid;
+        border-radius: 2px;
+    }
+
+    .edit-modal-save {
+        background: none;
+        color: #3b89ff;
+    }
+
+    .edit-modal-cancel {
+        background: none;
+        color: #ff3052;
+    }
+
+    .edit-modal-title {
+        width: 100%;
+        padding: 8px 5px;
+        margin-top: 10px;
+        font-size: 1.8rem;
+        border: 0.5px solid var(--gray-borders);
+        border-radius: 0.25rem;
+    }
+
+    .edit-modal-description {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 75%;
+        min-height: 75%;
+        max-height: 75%;
+        margin-top: 10px;
+        padding: 8px 5px;
+        font-size: 14px;
+        border: 1px solid var(--gray-borders);
+        border-radius: 0.25rem;
+        scrollbar-width: thin;
+    }
+
+    .edit-modal-description:focus,
+    .edit-modal-title:focus {
+        outline: none;
+        border: 2px solid var(--gray-borders);
+    }
+
+    .edit-modal-description::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+
+    .edit-modal-description::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
+    }
+</style>
+
 <h1 class="notes-page-title">My Notes</h1>
 
 <section class="notes-container">
     {{#each notes}}
-    <article class="note">
+    <article class="note" id="note-{{id}}">
 
         <div class="note-header">
 
-            <a href="/notes/edit/{{id}}" class="note-edit-link">
+            <a href="" class="note-edit-link" data-note-id="{{id}}" onclick="renderEditNoteForm(event, this)">
                 <span class="material-icons note-edit-icon">
                     edit
                 </span>
             </a>
-            <a href="" class="note-delete-btn">
+            <a href="" class="note-delete-btn" data-note-id="{{id}}" onclick="deleteNote(event, this)">
                 <span class="material-icons note-delete-icon">
                     delete
                 </span>
             </a>
 
         </div>
-        <h4 contenteditable="true" class="note-title" id="algo">
+        <h4 class="note-title" id="title-{{id}}">
             {{title}}
         </h4>
-        <input type="text" name="" id="">
-        <p contenteditable="true" class="note-description">
+        <p class="note-description" id="description-{{id}}">
             {{description}}
         </p>
 
@@ -153,21 +234,4 @@
 
     {{/each}}
 </section>
-<script>
-    /*  const algo = document.getElementById("algo").addEventListener("input", (e) => {
-          let content = e.target.textContent
-  
-          if (content.length > 100) {
-              // e.target.setAttribute("contenteditable", false)
-  
-              e.target.style.backgroundColor = "gray"
-  
-              e.target.style.wordBreak = "break-word"
-  
-              content = content.substring(0, content.length - 1)
-  
-  
-              e.target.innerHTML = content
-          }
-      })*/
-</script>
+<script src="/js/notesActions.js"></script>
